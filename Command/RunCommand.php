@@ -428,9 +428,12 @@ class RunCommand extends \Symfony\Bundle\FrameworkBundle\Command\ContainerAwareC
             $pb->add('exec');
         }
 
+        $dir = $_SERVER["PWD"];
+        $path = $_SERVER['PHP_SELF'];
+
         $pb
             ->add('php')
-            ->add($this->getContainer()->getParameter('kernel.root_dir').'/console')
+            ->add($dir.'/'.$path)
             ->add('--env='.$this->env)
         ;
 
